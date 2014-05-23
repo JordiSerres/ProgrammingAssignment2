@@ -29,6 +29,6 @@ cacheSolve <- function(x, ...) {            ## argument "x" is a list of functio
     data <- x$get()
     m <- solve(data, ...)                   ## calc the inverse matrix
     x$setsolve(m)
-    m                                           
+    m                                       ## return inverse matrix    
 }
 
