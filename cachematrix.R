@@ -2,34 +2,33 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+## MakeCacheMatrix return a list of 4 functions
 makeCacheMatrix <- function(x = matrix()) {
-    m <- NULL
+    m <- NULL                           
     set <- function(y) {
-    x <<- y
-    m <<- NULL
+    x <<- y                                 ## superassign the variable x
+    m <<- NULL                              ## superassign the variable m
     }
     get <- function() x
-    setsolve <- function(solve) m <<- solve
+    setsolve <- function(solve) m <<- solve ## superassign the variable m 
     getsolve <- function() m
-    list(set = set, get = get,
+    list(set = set, get = get,              ## returns a list
          setsolve = setsolve,
         getsolve = getsolve)
 }
 
 
 ## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+## Return a matrix that is the inverse of the matrix that is passed like argument at function "makeCacheMatrix
+cacheSolve <- function(x, ...) {            ## argument "x" is a list of functions
     m <- x$getsolve()
-    if(!is.null(m)) {
+    if(!is.null(m)) {                       ## when m is not null return cache inverse matrix and skip the function
         message("getting cached data")
-        return(m)
+        return(m)                       
     }
     data <- x$get()
-    m <- solve(data, ...)
+    m <- solve(data, ...)                   ## calc the inverse matrix
     x$setsolve(m)
-    m
+    m                                           
 }
 
